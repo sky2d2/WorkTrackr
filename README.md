@@ -60,12 +60,3 @@ WorkTrackr solves this by offering a streamlined Agile task management experienc
 - Agile methodologies (for project tracking and development)
 
 ---
-
-## Team Members
-
-- Aditya Singh Bhandari (A00287516)
-- Naga Lalitha Mirthipati (A00299457)
-- Pinto, Andara (A00315058)
-- Abhishek Chauhan (A00320017)
-
----
