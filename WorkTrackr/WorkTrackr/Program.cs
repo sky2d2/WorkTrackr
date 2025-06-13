@@ -6,7 +6,9 @@ namespace WorkTrackr
     {
         static void Main(string[] args)
         {
+            TaskManager manager = new TaskManager();
             bool exit = false;
+
             while (!exit)
             {
                 Console.Clear();
@@ -25,30 +27,36 @@ namespace WorkTrackr
                 switch (choice)
                 {
                     case "1":
-                        // TODO: View All Tasks
+                        manager.ViewAllTasks();
                         break;
                     case "2":
-                        // TODO: Create New Task
+                        manager.CreateTask();
                         break;
                     case "3":
-                        // TODO: Add New User
+                        // manager.AddUser(); → implement later
                         break;
                     case "4":
-                        // TODO: Assign Task to User
+                        // manager.AssignTask(); → implement later
                         break;
                     case "5":
-                        // TODO: Update Task Status
+                        // manager.UpdateTaskStatus(); → implement later
                         break;
                     case "6":
-                        // TODO: View Dashboard
+                        // manager.ViewDashboard(); → implement later
                         break;
                     case "7":
                         exit = true;
+                        Console.WriteLine("Exiting WorkTrackr...");
                         break;
                     default:
                         Console.WriteLine("Invalid option. Press Enter to try again.");
-                        Console.ReadLine();
                         break;
+                }
+
+                if (!exit)
+                {
+                    Console.WriteLine("\nPress Enter to continue...");
+                    Console.ReadLine();
                 }
             }
         }
