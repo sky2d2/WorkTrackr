@@ -2,7 +2,20 @@
 {
     public class User
     {
-        public string Name { get; set; }
-        public string ID { get; set; }
+        public int UserId { get; set; }
+        public string Name { get; set; }  
+        public string Email { get; set; }
+
+        public User(int userId, string name, string email)
+        {
+            UserId = userId;
+            Name = name ?? "";
+            Email = email ?? "";
+        }
+
+        public override string ToString()
+        {
+            return $"{UserId}: {Name} ({Email})";
+        }
     }
 }
