@@ -8,6 +8,8 @@ namespace WorkTrackr
         {
             TaskManager taskManager = new TaskManager();
             taskManager.LoadUsers();  // Load saved users and tasks
+            taskManager.AddSampleData();  // Only for testing/demo
+
             bool exit = false;
 
             while (!exit)

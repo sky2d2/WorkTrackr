@@ -253,24 +253,24 @@ namespace WorkTrackr
                 Console.WriteLine($"User '{newUser.Name}' added successfully with ID: {newUser.UserId}");
 
             }
-                
-            public void ViewUsers()
+
+        public void ViewUsers()
+        {
+            Console.WriteLine("=== Users ===");
+
+            if (Users.Count == 0)
             {
-                if (Users.Count == 0)
-                {
-                    Console.WriteLine("No users available.");
-                    return;
-                }
-
-                Console.WriteLine("=== List of Users ===");
-                foreach (var user in Users)
-                {
-                    Console.WriteLine($"ID: {user.UserId} | Name: {user.Name}");
-                }
-
+                Console.WriteLine("No users available.");
+                return;
             }
 
-            public void DeleteUser()
+            foreach (var user in Users)
+            {
+                Console.WriteLine($"ID: {user.UserId} | Name: {user.Name} | Email: {user.Email}");
+            }
+        }
+
+        public void DeleteUser()
             {
                 Console.WriteLine("=== Delete User ===");
 
@@ -475,19 +475,6 @@ namespace WorkTrackr
             Console.WriteLine(new string('*', 40));
         }
 
-        public void ViewUsers()
-        {
-            Console.WriteLine("=== Users ===");
-            if (Users.Count == 0)
-            {
-                Console.WriteLine("No users found.");
-                return;
-            }
-
-            foreach (var user in Users)
-            {
-                Console.WriteLine(user);
-            }
-        }
+        
     }
 }
