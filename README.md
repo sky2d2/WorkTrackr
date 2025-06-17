@@ -112,6 +112,7 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 - Dashboard implemented with LINQ (Pinto)
 - Dahsboard component utilized within TaskManger as a public function (Pinto)
 - Refining the Dashboard component using Asterisk pattern (Pinto)
+- Duplicate method removed from TaskManager (Aditya)
 
 
 ### 🔄 In Progress
@@ -135,7 +136,10 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 6. Edit Task
 7. Delete Task
 8. View Dashboard
-9. Exit
+9. View Users
+10. Delete User
+11. Exit
+Select an option (1-11):   
     
 Select an option:     
 
