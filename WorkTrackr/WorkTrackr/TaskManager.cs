@@ -113,6 +113,92 @@ namespace WorkTrackr
             }
         }
 
+        public void EditTask()
+{
+    Console.WriteLine("=== Edit Task ===");
+    if (Tasks.Count == 0)
+    {
+        Console.WriteLine("No tasks to edit.");
+        return;
+    }
+
+    foreach (var task in Tasks)
+    {
+        Console.WriteLine(task);
+    }
+
+    Console.Write("Enter Task ID to edit: ");
+    if (!int.TryParse(Console.ReadLine(), out int taskId))
+    {
+        Console.WriteLine("Invalid ID.");
+        return;
+    }
+
+    var taskToEdit = Tasks.FirstOrDefault(t => t.TaskId == taskId);
+    if (taskToEdit == null)
+    {
+        Console.WriteLine("Task not found.");
+        return;
+    }
+
+    Console.Write($"Title ({taskToEdit.Title}): ");
+    string newTitle = Console.ReadLine();
+    if (!string.IsNullOrWhiteSpace(newTitle)) taskToEdit.Title = newTitle;
+
+    Console.Write($"Description ({taskToEdit.Description}): ");
+    string newDesc = Console.ReadLine();
+    if (!string.IsNullOrWhiteSpace(newDesc)) taskToEdit.Description = newDesc;
+
+    Console.Write($"Priority ({taskToEdit.Priority}) [1=Low, 2=Medium, 3=High]: ");
+    string priorityInput = Console.ReadLine();
+    switch (priorityInput)
+    {
+        case "1": taskToEdit.Priority = "Low"; break;
+        case "2": taskToEdit.Priority = "Medium"; break;
+        case "3": taskToEdit.Priority = "High"; break;
+    }
+
+    Console.WriteLine("Task updated!");
+}
+        public void DeleteTask()
+{
+    Console.WriteLine("=== Delete Task ===");
+
+    if (Tasks.Count == 0)
+    {
+        Console.WriteLine("No tasks to delete.");
+        return;
+    }
+
+    foreach (var task in Tasks)
+    {
+        Console.WriteLine(task);
+    }
+
+    Console.Write("Enter Task ID to delete: ");
+    if (!int.TryParse(Console.ReadLine(), out int taskId))
+    {
+        Console.WriteLine("Invalid ID.");
+        return;
+    }
+
+    var taskToDelete = Tasks.FirstOrDefault(t => t.TaskId == taskId);
+    if (taskToDelete == null)
+    {
+        Console.WriteLine("Task not found.");
+        return;
+    }
+
+    Console.Write($"Are you sure you want to delete task '{taskToDelete.Title}'? (y/n): ");
+    if (Console.ReadLine().ToLower() == "y")
+    {
+        Tasks.Remove(taskToDelete);
+        Console.WriteLine("Task deleted.");
+    }
+    else
+    {
+        Console.WriteLine("Cancelled.");
+    }
         public void AddUser()
         {
             Console.WriteLine("=== Add New User ===");
@@ -234,6 +320,40 @@ namespace WorkTrackr
             Console.WriteLine($"Status updated to {newStatus}.");
         }
 
+            public void AddSampleData()
+{
+    // Add sample users
+    Users.Add(new User(nextUserId++, "Alice", "alice@example.com"));
+    Users.Add(new User(nextUserId++, "Bob", "bob@example.com"));
+    Users.Add(new User(nextUserId++, "Charlie", "charlie@example.com"));
+
+    // Add sample tasks
+    Tasks.Add(new Task(nextTaskId++, "Design login screen", "Create a user-friendly login UI")
+    {
+        Priority = "High",
+        DueDate = DateTime.Today.AddDays(5),
+        Status = "In Progress",
+        AssignedUserId = 1
+    });
+
+    Tasks.Add(new Task(nextTaskId++, "Fix registration bug", "Resolve issue with registration validation")
+    {
+        Priority = "Medium",
+        DueDate = DateTime.Today.AddDays(7),
+        Status = "Backlog",
+        AssignedUserId = 2
+    });
+
+    Tasks.Add(new Task(nextTaskId++, "Write documentation", "Add usage guide for the WorkTrackr app")
+    {
+        Priority = "Low",
+        DueDate = DateTime.Today.AddDays(10),
+        Status = "In Review",
+        AssignedUserId = 3
+    });
+
+    Console.WriteLine("Sample users and tasks added successfully.");
+}
         public void ViewDashboard()
         {
             Console.WriteLine("=== Dashboard ===");
