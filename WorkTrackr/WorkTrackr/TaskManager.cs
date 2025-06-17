@@ -109,7 +109,17 @@ namespace WorkTrackr
 
             foreach (var task in Tasks)
             {
-                Console.WriteLine(task);
+                switch (task.Status)
+                {
+                    case "Backlog": Console.ForegroundColor = ConsoleColor.Gray; break;
+                    case "In Progress": Console.ForegroundColor = ConsoleColor.Yellow; break;
+                    case "In Review": Console.ForegroundColor = ConsoleColor.blue; break;
+                    case "Completed": Console.ForegroundColor = ConsoleColor.Green; break;
+                    default: Console.ResetColor(); break;
+                }
+
+                Console.WriteLine(task.GetSummary()); // Replaces the implicit ToString()
+                Console.ResetColor();
             }
         }
 
