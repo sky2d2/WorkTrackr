@@ -29,6 +29,7 @@ namespace WorkTrackr
             }
         }
 
+        // Create a new task
         public void CreateTask()
         {
             Console.WriteLine("=== Create New Task ===");
@@ -116,6 +117,7 @@ namespace WorkTrackr
             Console.WriteLine($"Task '{title}' created successfully!");
         }
 
+        // View all tasks with colors based on status
         public void ViewAllTasks()
         {
             Console.WriteLine("=== All Tasks ===");
@@ -136,11 +138,12 @@ namespace WorkTrackr
                     default: Console.ResetColor(); break;
                 }
 
-                Console.WriteLine(task.GetSummary()); // Replaces the implicit ToString()
+                Console.WriteLine(task.GetSummary());
                 Console.ResetColor();
             }
         }
 
+        // Edit existing task
         public void EditTask()
         {
             Console.WriteLine("=== Edit Task ===");
@@ -188,6 +191,8 @@ namespace WorkTrackr
 
             Console.WriteLine("Task updated!");
         }
+
+        // Delete a task
         public void DeleteTask()
         {
             Console.WriteLine("=== Delete Task ===");
@@ -218,7 +223,7 @@ namespace WorkTrackr
             }
 
             Console.Write($"Are you sure you want to delete task '{taskToDelete.Title}'? (y/n): ");
-            if (Console.ReadLine().ToLower() == "y")
+            if (Console.ReadLine()?.ToLower() == "y")
             {
                 Tasks.Remove(taskToDelete);
                 Console.WriteLine("Task deleted.");
@@ -228,18 +233,20 @@ namespace WorkTrackr
                 Console.WriteLine("Cancelled.");
             }
         }
-            public void AddUser()
-            {
-                Console.WriteLine("=== Add New User ===");
 
-                Console.Write("Enter user name: ");
-                string userName = Console.ReadLine() ?? "";
+        // Add new user
+        public void AddUser()
+        {
+            Console.WriteLine("=== Add New User ===");
 
-                Console.Write("Enter user email: ");
-                string email = Console.ReadLine() ?? "";
+            Console.Write("Enter user name: ");
+            string userName = Console.ReadLine() ?? "";
 
-                User newUser = new User(nextUserId++, userName, email);
-                Users.Add(newUser);
+            Console.Write("Enter user email: ");
+            string email = Console.ReadLine() ?? "";
+
+            User newUser = new User(nextUserId++, userName, email);
+            Users.Add(newUser);
 
                 SaveUsers();
 
@@ -319,167 +326,169 @@ namespace WorkTrackr
             {
                 Console.WriteLine("=== Assign Task to User ===");
 
-                if (Tasks.Count == 0 || Users.Count == 0)
-                {
-                    Console.WriteLine("Tasks or users are missing.");
-                    return;
-                }
-
-                foreach (var task in Tasks)
-                {
-                    Console.WriteLine(task);
-                }
-
-                Console.Write("Enter Task ID to assign: ");
-                if (!int.TryParse(Console.ReadLine(), out int taskId))
-                {
-                    Console.WriteLine("Invalid Task ID.");
-                    return;
-                }
-
-                var taskToAssign = Tasks.FirstOrDefault(t => t.TaskId == taskId);
-                if (taskToAssign == null)
-                {
-                    Console.WriteLine("Task not found.");
-                    return;
-                }
-
-                foreach (var user in Users)
-                {
-                    Console.WriteLine(user);
-                }
-
-                Console.Write("Enter User ID to assign: ");
-                if (!int.TryParse(Console.ReadLine(), out int userId))
-                {
-                    Console.WriteLine("Invalid User ID.");
-                    return;
-                }
-
-                var userToAssign = Users.FirstOrDefault(u => u.UserId == userId);
-                if (userToAssign == null)
-                {
-                    Console.WriteLine("User not found.");
-                    return;
-                }
-
-                taskToAssign.AssignedUserId = userId;
-                Console.WriteLine($"Task '{taskToAssign.Title}' assigned to {userToAssign.Name}.");
+            if (Tasks.Count == 0 || Users.Count == 0)
+            {
+                Console.WriteLine("Tasks or users are missing.");
+                return;
             }
 
-            public void UpdateTaskStatus()
+            foreach (var task in Tasks)
             {
-                Console.WriteLine("=== Update Task Status ===");
-
-                if (Tasks.Count == 0)
-                {
-                    Console.WriteLine("No tasks available.");
-                    return;
-                }
-
-                foreach (var task in Tasks)
-                {
-                    Console.WriteLine(task);
-                }
-
-                Console.Write("Enter Task ID to update: ");
-                if (!int.TryParse(Console.ReadLine(), out int taskId))
-                {
-                    Console.WriteLine("Invalid Task ID.");
-                    return;
-                }
-
-                var taskToUpdate = Tasks.FirstOrDefault(t => t.TaskId == taskId);
-                if (taskToUpdate == null)
-                {
-                    Console.WriteLine("Task not found.");
-                    return;
-                }
-
-                Console.WriteLine("Choose new status:");
-                Console.WriteLine("1 = Backlog, 2 = In Progress, 3 = In Review, 4 = Completed");
-                Console.Write("Your choice: ");
-                string input = Console.ReadLine();
-
-                string newStatus = input switch
-                {
-                    "1" => "Backlog",
-                    "2" => "In Progress",
-                    "3" => "In Review",
-                    "4" => "Completed",
-                    _ => ""
-                };
-
-                if (string.IsNullOrEmpty(newStatus))
-                {
-                    Console.WriteLine("Invalid status selection.");
-                    return;
-                }
-
-                taskToUpdate.Status = newStatus;
-                Console.WriteLine($"Status updated to {newStatus}.");
+                Console.WriteLine(task);
             }
 
-            public void AddSampleData()
+            Console.Write("Enter Task ID to assign: ");
+            if (!int.TryParse(Console.ReadLine(), out int taskId))
             {
-                // Add sample users
-                Users.Add(new User(nextUserId++, "Alice", "alice@example.com"));
-                Users.Add(new User(nextUserId++, "Bob", "bob@example.com"));
-                Users.Add(new User(nextUserId++, "Charlie", "charlie@example.com"));
-
-                // Add sample tasks
-                Tasks.Add(new Task(nextTaskId++, "Design login screen", "Create a user-friendly login UI")
-                {
-                    Priority = "High",
-                    DueDate = DateTime.Today.AddDays(5),
-                    Status = "In Progress",
-                    AssignedUserId = 1
-                });
-
-                Tasks.Add(new Task(nextTaskId++, "Fix registration bug", "Resolve issue with registration validation")
-                {
-                    Priority = "Medium",
-                    DueDate = DateTime.Today.AddDays(7),
-                    Status = "Backlog",
-                    AssignedUserId = 2
-                });
-
-                Tasks.Add(new Task(nextTaskId++, "Write documentation", "Add usage guide for the WorkTrackr app")
-                {
-                    Priority = "Low",
-                    DueDate = DateTime.Today.AddDays(10),
-                    Status = "In Review",
-                    AssignedUserId = 3
-                });
-
-                Console.WriteLine("Sample users and tasks added successfully.");
+                Console.WriteLine("Invalid Task ID.");
+                return;
             }
-            public void ViewDashboard()
+
+            var taskToAssign = Tasks.FirstOrDefault(t => t.TaskId == taskId);
+            if (taskToAssign == null)
             {
-                Console.WriteLine("=== Dashboard ===");
+                Console.WriteLine("Task not found.");
+                return;
+            }
 
-                if (Tasks.Count == 0)
-                {
-                    Console.WriteLine("No tasks to show.");
-                    return;
-                }
+            foreach (var user in Users)
+            {
+                Console.WriteLine(user);
+            }
 
-                int total = Tasks.Count;
-                int backlog = Tasks.Count(t => t.Status == "Backlog");
-                int inProgress = Tasks.Count(t => t.Status == "In Progress");
-                int review = Tasks.Count(t => t.Status == "In Review");
-                int completed = Tasks.Count(t => t.Status == "Completed");
+            Console.Write("Enter User ID to assign: ");
+            if (!int.TryParse(Console.ReadLine(), out int userId))
+            {
+                Console.WriteLine("Invalid User ID.");
+                return;
+            }
 
-                Console.WriteLine($"Total: {total}");
-                Console.WriteLine($"Backlog: {backlog}, In Progress: {inProgress}, In Review: {review}, Completed: {completed}");
+            var userToAssign = Users.FirstOrDefault(u => u.UserId == userId);
+            if (userToAssign == null)
+            {
+                Console.WriteLine("User not found.");
+                return;
+            }
 
-                var priorityStats = Tasks.GroupBy(t => t.Priority)
-                                         .Select(g => new { Priority = g.Key, Count = g.Count() });
-                Console.WriteLine("\nTasks by Priority:");
-                foreach (var item in priorityStats)
-                {
-                    Console.WriteLine($"{item.Priority}: {item.Count}");
-                }
+            taskToAssign.AssignedUserId = userId;
+            Console.WriteLine($"Task '{taskToAssign.Title}' assigned to {userToAssign.Name}.");
+        }
+
+        // Update task status
+        public void UpdateTaskStatus()
+        {
+            Console.WriteLine("=== Update Task Status ===");
+
+            if (Tasks.Count == 0)
+            {
+                Console.WriteLine("No tasks available.");
+                return;
+            }
+
+            foreach (var task in Tasks)
+            {
+                Console.WriteLine(task);
+            }
+
+            Console.Write("Enter Task ID to update: ");
+            if (!int.TryParse(Console.ReadLine(), out int taskId))
+            {
+                Console.WriteLine("Invalid Task ID.");
+                return;
+            }
+
+            var taskToUpdate = Tasks.FirstOrDefault(t => t.TaskId == taskId);
+            if (taskToUpdate == null)
+            {
+                Console.WriteLine("Task not found.");
+                return;
+            }
+
+            Console.WriteLine("Choose new status:");
+            Console.WriteLine("1 = Backlog, 2 = In Progress, 3 = In Review, 4 = Completed");
+            Console.Write("Your choice: ");
+            string input = Console.ReadLine();
+
+            string newStatus = input switch
+            {
+                "1" => "Backlog",
+                "2" => "In Progress",
+                "3" => "In Review",
+                "4" => "Completed",
+                _ => ""
+            };
+
+            if (string.IsNullOrEmpty(newStatus))
+            {
+                Console.WriteLine("Invalid status selection.");
+                return;
+            }
+
+            taskToUpdate.Status = newStatus;
+            Console.WriteLine($"Status updated to {newStatus}.");
+        }
+
+        // Add sample users and tasks
+        public void AddSampleData()
+        {
+            // Add sample users
+            Users.Add(new User(nextUserId++, "Alice", "alice@example.com"));
+            Users.Add(new User(nextUserId++, "Bob", "bob@example.com"));
+            Users.Add(new User(nextUserId++, "Charlie", "charlie@example.com"));
+
+            // Add sample tasks
+            Tasks.Add(new Task(nextTaskId++, "Design login screen", "Create a user-friendly login UI")
+            {
+                Priority = "High",
+                DueDate = DateTime.Today.AddDays(5),
+                Status = "In Progress",
+                AssignedUserId = 1
+            });
+
+            Tasks.Add(new Task(nextTaskId++, "Fix registration bug", "Resolve issue with registration validation")
+            {
+                Priority = "Medium",
+                DueDate = DateTime.Today.AddDays(7),
+                Status = "Backlog",
+                AssignedUserId = 2
+            });
+
+            Tasks.Add(new Task(nextTaskId++, "Write documentation", "Add usage guide for the WorkTrackr app")
+            {
+                Priority = "Low",
+                DueDate = DateTime.Today.AddDays(10),
+                Status = "In Review",
+                AssignedUserId = 3
+            });
+
+            Console.WriteLine("Sample users and tasks added successfully.");
+        }
+
+        // Show dashboard using the Dashboard class
+        public void ViewDashboard()
+        {
+            Dashboard dashboard = new Dashboard(Tasks, Users);
+
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine("************** DASHBOARD ***************");
+            Console.WriteLine(new string('*', 40));
+            dashboard.Show();
+            Console.WriteLine(new string('*', 40));
+        }
+
+        public void ViewUsers()
+        {
+            Console.WriteLine("=== Users ===");
+            if (Users.Count == 0)
+            {
+                Console.WriteLine("No users found.");
+                return;
+            }
+
+            foreach (var user in Users)
+            {
+                Console.WriteLine(user);
             }
         }
     }
+}

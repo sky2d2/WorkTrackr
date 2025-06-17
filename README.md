@@ -27,8 +27,12 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
   - Status defaults to **Backlog**
   - Due date input options: 1 week, 2 weeks, or custom (yyyy-mm-dd)
   - Validation for past/future dates and correct formats
-- View all tasks in formatted list
-- Add users
+- View tasks with color-coded statuses:
+  - Backlog: Gray
+  - In Progress: Yellow
+  - In Review: Blue
+  - Completed: Green
+- Add and View users
 - Assign task to user
 - Update task status using 1/2/3/4 input
 - View dashboard with task counts by status and priority (LINQ-based)
@@ -106,6 +110,7 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 - EditTask and DeleteTask methods integrated into UI (Aditya)
 - Fixed Build Error associated with TaskManager (Pinto)
 - Dashboard implemented with LINQ (Pinto)
+- Dahsboard component utilized within TaskManger as a public function (Pinto)
 
 
 ### 🔄 In Progress
