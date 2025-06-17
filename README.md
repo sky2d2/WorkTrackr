@@ -98,10 +98,10 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 - AssignTask, AddUser, and UpdateTaskStatus methods (Lalitha, Pinto)
 - Refactored and cleaned logic for user input (Aditya)
 - `.gitignore` + initial README (Aditya)
-
-### 🔄 In Progress
 - Add sample data (Abhishek)
 - Add/Edit/Delete tasks (Abhishek)
+
+### 🔄 In Progress
 - Dashboard implemented with LINQ (Pinto)
 
 
