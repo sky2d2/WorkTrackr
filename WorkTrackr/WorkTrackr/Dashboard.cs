@@ -17,7 +17,7 @@ namespace WorkTrackr
 
         public void Show()
         {
-            Console.WriteLine("=== Dashboard ===");
+            Console.WriteLine("=== Work Tracker Dashboard ===");
 
             if (_tasks.Count == 0)
             {
