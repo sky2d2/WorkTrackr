@@ -106,7 +106,7 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 - Refactored and cleaned logic for user input (Aditya)
 - `.gitignore` + initial README (Aditya)
 - Add sample data (Abhishek)
-- Add/Edit/Delete tasks (Abhishek)
+- Edit/Delete tasks (Abhishek)
 - EditTask and DeleteTask methods integrated into UI (Aditya)
 - Fixed Build Error associated with TaskManager (Pinto)
 - Dashboard implemented with LINQ (Pinto)
