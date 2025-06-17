@@ -470,7 +470,6 @@ namespace WorkTrackr
             Dashboard dashboard = new Dashboard(Tasks, Users);
 
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine("************** DASHBOARD ***************");
             Console.WriteLine(new string('*', 40));
             dashboard.Show();
             Console.WriteLine(new string('*', 40));
