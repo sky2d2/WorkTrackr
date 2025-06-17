@@ -1,81 +1,77 @@
-# WorkTrackr
+# WorkTrackr  
 **Team Task Management & Agile Progress Tracker**
 
 ---
 
-## Project Overview
+## 🧠 Project Overview
 
 WorkTrackr is a lightweight, console-based productivity tool designed to help small teams manage tasks collaboratively.  
-It enables users to create, assign, and track tasks, set priorities and deadlines, and monitor project progress through an Agile workflow — all within a simple, fast console application.
+It enables users to create, assign, and track tasks, set priorities and deadlines, and monitor project progress through an Agile workflow — all within a fast and user-friendly console application.
 
 ---
 
-## Business Problem
+## 💼 Business Problem
 
-Small teams often lack affordable, easy-to-use task management systems. Many existing tools are either too complex or too expensive.  
-WorkTrackr addresses this by providing a streamlined Agile task management experience in a **simple C# console application**, with clear features focused on real team needs.
+Small teams often lack affordable, simple task management tools. Popular platforms are either too complex or too expensive.  
+WorkTrackr addresses this by providing a streamlined Agile task management experience in a **C# console application**, with only essential features that support real teamwork.
 
 ---
 
-## ✅ Current Features (Completed)
+## ✅ Completed Features
 
-- Console-based **Main Menu** with working options (View, Create, Exit)
-- Create task feature includes:
+- Console-based **Main Menu** with options for task management
+- Create task feature:
   - Title, description, due date, priority (1 = Low, 2 = Medium, 3 = High)
   - Status defaults to **Backlog**
-  - Input validation: rejects invalid dates and past due dates
-- View all tasks in clean formatted output
-- All tasks stored in memory using `List<Task>`
-- **.gitignore** added for clean repository structure
-
----
-
-## 🚀 Planned Features (Next Steps)
-
-- Assign tasks to users
-- Add/edit/delete tasks
-- Update task status (In Progress, In Review, Completed)
-- Add comments to tasks
-- Enhanced dashboard using LINQ
-- Save/load task data (optional)
-- Add sample/test data for demo
-
----
-
-## 🎯 Objectives
-
-- Provide an easy-to-use task management system for small teams
-- Implement Agile workflow concepts in a console application
-- Help teams stay organized and track project progress
-- Practice key C# concepts:
-  - Classes and objects
-  - Methods and control flow
-  - Collections (List<>)
-  - LINQ queries and filtering
-  - Exception handling and input validation
-
----
-
-## 🔁 How It Works (Current Flow)
-
-1. User launches WorkTrackr → Main Menu is displayed
-2. User can:
-   - View all tasks
-   - Create a new task
-   - Exit the application
-3. Each task contains:
-   - Title, Description, Priority, Due Date, Status
-4. Tasks default to “Backlog” status
-5. Input is validated for correctness and date formatting
+  - Due date input options: 1 week, 2 weeks, or custom (yyyy-mm-dd)
+  - Validation for past/future dates and correct formats
+- View all tasks in formatted list
+- Add users
+- Assign task to user
+- Update task status using 1/2/3/4 input
+- View dashboard with task counts by status and priority (LINQ-based)
+- All data held in memory using `List<T>`
+- Refactored for clean, readable input handling
+- `.gitignore` and initial README
 
 ---
 
 ## 🛠️ Technologies Used
 
-- **C# (.NET 8 LTS Console Application)** → current supported version (2025)
+- **C# (.NET 8 LTS Console Application)**
 - **Visual Studio 2022**
-- **GitHub** (version control + collaboration)
-- Agile methodologies (task board, team roles, commits)
+- **GitHub** (Version Control & Collaboration)
+- Agile development workflow (task board, roles, commits)
+
+---
+
+## 🎯 Learning Objectives
+
+- Build a functional C# console application from scratch
+- Apply Agile principles to real development (task assignments, status tracking)
+- Practice core C# concepts:
+  - Classes, objects, and constructors
+  - Collections (List<T>)
+  - Control flow (switch, if, loops)
+  - LINQ queries
+  - Exception handling & validation
+- Use GitHub for version control and collaboration
+
+---
+
+## 🔁 How It Works (User Flow)
+
+1. User launches app → sees **Main Menu**
+2. User can:
+   - View all tasks
+   - Create new task
+   - Add a new user
+   - Assign task to user
+   - Update task status
+   - View dashboard (summary)
+   - Exit application
+3. Inputs are validated
+4. Program responds with clear output for all operations
 
 ---
 
@@ -95,31 +91,27 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 ### ✅ Completed
 - Project structure created (Aditya)
 - Program.cs with Main Menu added (Aditya)
-- Task.cs added (Aditya)
-- User.cs added (Aditya)
-- TaskManager.cs added (Aditya)
-- CreateTask method with validation (Aditya)
-- ViewAllTasks logic implemented (Aditya)
-- Date & priority validation added (Aditya)
-- .gitignore added (Aditya)
-- Initial README.md created (Aditya)
+- Task.cs, User.cs, TaskManager.cs created (Aditya)
+- CreateTask logic (Aditya)
+- ViewAllTasks logic (Aditya)
+- Priority & due date validation using input options (Aditya)
+- AssignTask, AddUser, and UpdateTaskStatus methods (Lalitha, Pinto)
+- Refactored and cleaned logic for user input (Aditya)
+- `.gitignore` + initial README (Aditya)
 
 ### 🔄 In Progress
-- [To be updated as new features are implemented]
+- Add sample data (Abhishek)
+- Add/Edit/Delete tasks (Abhishek)
+- Dashboard implemented with LINQ (Pinto)
+
 
 ### ⏳ Backlog (Not Started)
-- Assign task logic (Lalitha)
-- Add/edit/delete tasks (Abhishek)
-- Dashboard and LINQ queries (Pinto)
-- Add user logic (Lalitha)
-- Update task status logic (Pinto)
-- Add comments (TBD)
-- Add sample data (Abhishek)
+- Add task comments
+- Save/load from file (optional)
 
 ---
 
 ## 💻 Console UI Mockup
-
 === WorkTrackr Main Menu ===
 
 1. View All Tasks
@@ -130,9 +122,7 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 6. View Dashboard
 7. Exit
 
-Select an option:
-
-
+Select an option: __
 
 
 
