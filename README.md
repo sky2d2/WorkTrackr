@@ -105,10 +105,11 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 - Add/Edit/Delete tasks (Abhishek)
 - EditTask and DeleteTask methods integrated into UI (Aditya)
 - Fixed Build Error associated with TaskManager (Pinto)
+- Dashboard implemented with LINQ (Pinto)
 
 
 ### 🔄 In Progress
-- Dashboard implemented with LINQ (Pinto)
+- 
 
 
 ### ⏳ Backlog (Not Started)
