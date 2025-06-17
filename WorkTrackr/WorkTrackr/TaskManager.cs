@@ -113,7 +113,7 @@ namespace WorkTrackr
                 {
                     case "Backlog": Console.ForegroundColor = ConsoleColor.Gray; break;
                     case "In Progress": Console.ForegroundColor = ConsoleColor.Yellow; break;
-                    case "In Review": Console.ForegroundColor = ConsoleColor.blue; break;
+                    case "In Review": Console.ForegroundColor = ConsoleColor.Blue; break;
                     case "Completed": Console.ForegroundColor = ConsoleColor.Green; break;
                     default: Console.ResetColor(); break;
                 }
@@ -223,8 +223,25 @@ namespace WorkTrackr
                 User newUser = new User(nextUserId++, userName, email);
                 Users.Add(newUser);
 
-                Console.WriteLine($"User '{userName}' added successfully.");
+                Console.WriteLine($"User '{newUser.Name}' added successfully with ID: {newUser.UserId}");
+
             }
+                
+            public void ViewUsers()
+            {
+                if (Users.Count == 0)
+                {
+                    Console.WriteLine("No users available.");
+                    return;
+                }
+
+                Console.WriteLine("=== List of Users ===");
+                foreach (var user in Users)
+                {
+                    Console.WriteLine($"ID: {user.UserId} | Name: {user.Name}");
+                }
+
+        }   
 
             public void AssignTask()
             {
