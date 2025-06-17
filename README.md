@@ -19,7 +19,9 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 
 ## ✅ Completed Features
 
-- Console-based **Main Menu** with options for task management
+- Console-based **Main Menu** with full options: View, Create, Edit, Delete, Assign, Update, Dashboard, Exit
+  - Edit existing tasks (update title, description, priority)
+  - Delete tasks with confirmation prompt
 - Create task feature:
   - Title, description, due date, priority (1 = Low, 2 = Medium, 3 = High)
   - Status defaults to **Backlog**
@@ -68,6 +70,7 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
    - Add a new user
    - Assign task to user
    - Update task status
+   - Edit or delete existing tasks
    - View dashboard (summary)
    - Exit application
 3. Inputs are validated
@@ -100,6 +103,8 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 - `.gitignore` + initial README (Aditya)
 - Add sample data (Abhishek)
 - Add/Edit/Delete tasks (Abhishek)
+- EditTask and DeleteTask methods integrated into UI (Aditya)
+
 
 ### 🔄 In Progress
 - Dashboard implemented with LINQ (Pinto)
@@ -112,17 +117,20 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
 ---
 
 ## 💻 Console UI Mockup
-=== WorkTrackr Main Menu ===
 
+=== WorkTrackr Main Menu ===
 1. View All Tasks
 2. Create New Task
 3. Add New User
 4. Assign Task to User
 5. Update Task Status
-6. View Dashboard
-7. Exit
+6. Edit Task
+7. Delete Task
+8. View Dashboard
+9. Exit
+    
+Select an option:     
 
-Select an option: __
 
 
 
