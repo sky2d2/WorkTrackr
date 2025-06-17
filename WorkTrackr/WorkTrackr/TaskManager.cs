@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 
 namespace WorkTrackr
 {
@@ -10,6 +11,23 @@ namespace WorkTrackr
         private List<User> Users = new List<User>();
         private int nextTaskId = 1;
         private int nextUserId = 1;
+        private const string usersFile = "users.json";
+
+        public void SaveUsers()
+        {
+            var json = JsonSerializer.Serialize(Users);
+            System.IO.File.WriteAllText(usersFile, json);
+        }
+
+        public void LoadUsers()
+        {
+            if (System.IO.File.Exists(usersFile))
+            {
+                var json = System.IO.File.ReadAllText(usersFile);
+                Users = JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
+                nextUserId = Users.Any() ? Users.Max(u => u.UserId) + 1 : 1;
+            }
+        }
 
         public void CreateTask()
         {
@@ -223,6 +241,8 @@ namespace WorkTrackr
                 User newUser = new User(nextUserId++, userName, email);
                 Users.Add(newUser);
 
+                SaveUsers();
+
                 Console.WriteLine($"User '{newUser.Name}' added successfully with ID: {newUser.UserId}");
 
             }
@@ -241,9 +261,61 @@ namespace WorkTrackr
                     Console.WriteLine($"ID: {user.UserId} | Name: {user.Name}");
                 }
 
-        }   
+            }
 
-            public void AssignTask()
+            public void DeleteUser()
+            {
+                Console.WriteLine("=== Delete User ===");
+
+                if (Users.Count == 0)
+                {
+                    Console.WriteLine("No users to delete.");
+                    return;
+                }
+
+                // Show list of users
+                foreach (var user in Users)
+                {
+                    Console.WriteLine($"ID: {user.UserId} | Name: {user.Name} | Email: {user.Email}");
+                }
+
+                Console.Write("Enter User ID to delete: ");
+                if (!int.TryParse(Console.ReadLine(), out int userId))
+                {
+                    Console.WriteLine("Invalid User ID.");
+                    return;
+                }
+
+                var userToDelete = Users.FirstOrDefault(u => u.UserId == userId);
+                if (userToDelete == null)
+                {
+                    Console.WriteLine("User not found.");
+                    return;
+                }
+
+                // Check if this user is assigned to any task
+                var assignedTasks = Tasks.Where(t => t.AssignedUserId == userId).ToList();
+                if (assignedTasks.Any())
+                {
+                    Console.WriteLine("This user is assigned to one or more tasks. Reassign or delete those tasks first.");
+                    return;
+                }
+
+                Console.Write($"Are you sure you want to delete user '{userToDelete.Name}'? (y/n): ");
+                if (Console.ReadLine()?.ToLower() == "y")
+                {
+                    Users.Remove(userToDelete);
+                    SaveUsers();
+                    Console.WriteLine("User deleted successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Cancelled.");
+                }
+            }
+
+
+        public void AssignTask()
             {
                 Console.WriteLine("=== Assign Task to User ===");
 

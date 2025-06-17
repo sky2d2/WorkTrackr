@@ -7,7 +7,7 @@ namespace WorkTrackr
         static void Main(string[] args)
         {
             TaskManager taskManager = new TaskManager();
-            taskManager.AddSampleData();  // Load sample users and tasks
+            taskManager.LoadUsers();  // Load saved users and tasks
             bool exit = false;
 
             while (!exit)
@@ -23,8 +23,9 @@ namespace WorkTrackr
                 Console.WriteLine("7. Delete Task");            // ⬅ NEW
                 Console.WriteLine("8. View Dashboard");
                 Console.WriteLine("9. View Users");
-                Console.WriteLine("10. Exit");
-                Console.Write("Select an option (1-10): ");
+                Console.WriteLine("10. Delete User");
+                Console.WriteLine("11. Exit");
+                Console.Write("Select an option (1-11): ");
 
 
                 string choice = Console.ReadLine();
@@ -40,7 +41,8 @@ namespace WorkTrackr
                     case "7": taskManager.DeleteTask(); break;     // ⬅ NEW
                     case "8": taskManager.ViewDashboard(); break;
                     case "9": taskManager.ViewUsers(); break;
-                    case "10": exit = true; break;
+                    case "10": taskManager.DeleteUser(); break;
+                    case "11": exit = true; break;
 
                     default:
                         Console.WriteLine("Invalid option. Press Enter to try again.");
