@@ -32,7 +32,7 @@ WorkTrackr addresses this by providing a streamlined Agile task management exper
   - In Progress: Yellow
   - In Review: Blue
   - Completed: Green
-- Add and View users
+- Add and View, delete users
 - Assign task to user
 - Update task status using 1/2/3/4 input
 - View dashboard with task counts by status and priority (LINQ-based)
