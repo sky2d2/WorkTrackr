@@ -6,7 +6,7 @@ namespace WorkTrackr
     {
         static void Main(string[] args)
         {
-            TaskManager manager = new TaskManager();
+            TaskManager taskManager = new TaskManager();
             bool exit = false;
 
             while (!exit)
@@ -26,36 +26,22 @@ namespace WorkTrackr
 
                 switch (choice)
                 {
-                    case "1":
-                        manager.ViewAllTasks();
-                        break;
-                    case "2":
-                        manager.CreateTask();
-                        break;
-                    case "3":
-                        // manager.AddUser(); → implement later
-                        break;
-                    case "4":
-                        // manager.AssignTask(); → implement later
-                        break;
-                    case "5":
-                        // manager.UpdateTaskStatus(); → implement later
-                        break;
-                    case "6":
-                        // manager.ViewDashboard(); → implement later
-                        break;
-                    case "7":
-                        exit = true;
-                        Console.WriteLine("Exiting WorkTrackr...");
-                        break;
+                    case "1": taskManager.ViewAllTasks(); break;
+                    case "2": taskManager.CreateTask(); break;
+                    case "3": taskManager.AddUser(); break;
+                    case "4": taskManager.AssignTask(); break;
+                    case "5": taskManager.UpdateTaskStatus(); break;
+                    case "6": taskManager.ViewDashboard(); break;
+                    case "7": exit = true; break;
                     default:
                         Console.WriteLine("Invalid option. Press Enter to try again.");
+                        Console.ReadLine();
                         break;
                 }
 
                 if (!exit)
                 {
-                    Console.WriteLine("\nPress Enter to continue...");
+                    Console.WriteLine("\nPress Enter to return to Main Menu...");
                     Console.ReadLine();
                 }
             }
