@@ -19,8 +19,10 @@ namespace WorkTrackr
                 Console.WriteLine("3. Add New User");
                 Console.WriteLine("4. Assign Task to User");
                 Console.WriteLine("5. Update Task Status");
-                Console.WriteLine("6. View Dashboard");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine("6. Edit Task");              // ⬅ NEW
+                Console.WriteLine("7. Delete Task");            // ⬅ NEW
+                Console.WriteLine("8. View Dashboard");
+                Console.WriteLine("9. Exit");
                 Console.Write("Select an option: ");
 
                 string choice = Console.ReadLine();
@@ -32,8 +34,10 @@ namespace WorkTrackr
                     case "3": taskManager.AddUser(); break;
                     case "4": taskManager.AssignTask(); break;
                     case "5": taskManager.UpdateTaskStatus(); break;
-                    case "6": taskManager.ViewDashboard(); break;
-                    case "7": exit = true; break;
+                    case "6": taskManager.EditTask(); break;       // ⬅ NEW
+                    case "7": taskManager.DeleteTask(); break;     // ⬅ NEW
+                    case "8": taskManager.ViewDashboard(); break;
+                    case "9": exit = true; break;
                     default:
                         Console.WriteLine("Invalid option. Press Enter to try again.");
                         Console.ReadLine();
