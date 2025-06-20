@@ -27,10 +27,10 @@
             return $"Task #{TaskId} - {Title} | Priority: {Priority} | Status: {Status} | Assigned: {assigned} | Due: {DueDate:yyyy-MM-dd}";
         }
 
-        /*public override string ToString()
+        public override string ToString()
         {
             string assigned = AssignedUserId.HasValue ? AssignedUserId.Value.ToString() : "None";
             return $"[{TaskId}] {Title} (Priority: {Priority}, Status: {Status}, Assigned to: {assigned}, Due: {DueDate:yyyy-MM-dd})";
-        }*/
+        }
     }
 }
